@@ -9,7 +9,7 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
     Route::get('/dashboard', [\App\Http\Controllers\Admin\PageController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/profile', [\App\Http\Controllers\Admin\PageController::class, 'profile'])->name('profile');
-
+    Route::get('/profile/{id}', [\App\Http\Controllers\Admin\PageController::class, 'getAdmin'])->name('profile.getadmin');
     Route::put('/profile', [\App\Http\Controllers\Admin\PageController::class, 'update'])->name('profile.update');
 
 

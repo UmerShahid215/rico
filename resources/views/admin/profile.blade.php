@@ -66,47 +66,40 @@
                         {{-- <input type="hidden" value="{{$user_type}}" name="user_type">
                         <input type="hidden" value="{{$user_permission}}" name="user_permission"> --}}
 
+                        <input type="hidden" id="id" name="id">
+
                         <div class="tab-content">
                             <div class="tab-pane active" id="kt_user_edit_tab_1" role="tabpanel">
                                 <div class="kt-form kt-form--label-right">
                                     <div class="kt-form__body">
                                         <div class="kt-section kt-section--first">
                                             <div class="kt-section__body">
-                                                {{-- <div class="row">
-                                                    <label class="col-xl-3"></label>
+                                               
+                                                <div class="form-group row">
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">Profile Pic</label>
                                                     <div class="col-lg-9 col-xl-6">
-                                                        <h3 class="kt-section__title kt-section__title-sm">{{ $user_type }} Info:</h3>
+                                                    @if(Auth::user()->profile_pic)
+                                                    <img class="image rounded-circle w-25 pb-2" src="{{asset('/storage/images/'.Auth::user()->profile_pic)}}" alt="profile_image" >   
+                                                    @endif
+                                                        <input class="form-control " type="file"  id='profile_pic' name="profile_pic">
                                                     </div>
-                                                </div> --}}
+                                                </div>
                                                 <div class="form-group row">
                                                     <label class="col-xl-3 col-lg-3 col-form-label">First Name</label>
                                                     <div class="col-lg-9 col-xl-6">
-                                                        <input class="form-control" type="text" value="{{$user->f_name}}" name="f_name">
+                                                        <input class="form-control" type="text" value="{{$user->f_name}}" id='f_name' name="f_name">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-xl-3 col-lg-3 col-form-label">Last Name</label>
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">Email</label>
                                                     <div class="col-lg-9 col-xl-6">
-                                                        <input class="form-control" type="text" value="{{$user->l_name}}" name="l_name">
+                                                        <input class="form-control" type="text" value="{{$user->email}}" id='email' name="email">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-xl-3 col-lg-3 col-form-label">Contact Phone</label>
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">Password</label>
                                                     <div class="col-lg-9 col-xl-6">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i></span></div>
-                                                            <input type="number" class="form-control" placeholder="Phone"  aria-describedby="basic-addon1" name="phone_number" value="{{ $user->phone_number }}">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-xl-3 col-lg-3 col-form-label">DOB</label>
-                                                    <div class="col-lg-9 col-xl-6">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
-                                                            <input type="date" class="form-control" placeholder="DOB"  aria-describedby="basic-addon1" name="dob" value="{{ $user->dob }}">
-                                                        </div>
-                                                        {{--                                                    <span class="form-text text-muted">We'll never share your email with anyone else.</span>--}}
+                                                        <input class="form-control" type="password" value="{{$user->password}}" id='password' name="password">
                                                     </div>
                                                 </div>
                                                 <div class="kt-separator kt-separator--border-dashed kt-separator--portlet-fit kt-separator--space-lg"></div>
@@ -177,4 +170,44 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
+
+    function editAdmin(id) {
+        $.get('/profile/'+id, function(user)){
+        $(#id).val(user.id);
+        $(#f_name).val(user.f_name);
+        $(#user.profile_pic).val(user.profile_pic);
+        $(#email).val(user.email);
+        $(#password).val(user.password);
+        })
+        
+    }
+
+    $('#my-form').submit(function(e){
+        e.preventDefault();
+        let id = $("id").val();
+        let f_name = $("f_name").val();
+        let profile_pic = $("profile_pic").val();
+        let email = $("email").val();
+        let password = $("password").val();
+        let _token = $("input[name=_token]").val();
+    })
+
+    $.ajax({
+         url: '/profile/',
+         type: "PUT",
+         data: {
+            f_name:f_name,
+            profile_pic:profile_pic,
+            email:email,
+            password:password,
+            _token:_token
+         },
+         success:function(response){
+             $('#id' + response.id).text(response.f_name);
+             $('#id' + response.id).text(response.profile_pic);
+             $('#id' + response.id).text(response.email);
+             $('#id' + response.id).text(response.password); 
+             $("#my-form")[0].reset
+         }
+    })
 </script>
