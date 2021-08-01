@@ -118,7 +118,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="kt-login__container">
                     <div class="kt-login__logo">
                         <a href="#">
-                            <h5 style="font-size: xxx-large">CRM</h5>
+                            <h5 style="font-size: xxx-large">RICO</h5>
 {{--                            <img src="{{asset('assets/media/logos/logo-mini-2-md.png')}}">--}}
                         </a>
                     </div>

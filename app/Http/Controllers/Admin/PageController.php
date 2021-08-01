@@ -15,13 +15,13 @@ class PageController extends Controller
     {
         $totalSupervisors = User::role('supervisor')->count();
 
-        $totalManagers = User::role('manager')->count();
+        $totalManagers =0;
 
         $totalEmployees = User::role('customer')->count();
 
         $totalForms  = Form::count();
 
-        $employees = User::role('customer')->withCount('employeeForms')->orderBy('employee_forms_count', 'desc')->limit(5)->get(['id', 'f_name', 'l_name', 'created_at']);
+        $employees = User::role('customer')->withCount('employeeForms')->orderBy('employee_forms_count', 'desc')->limit(5)->get(['id', 'username', 'created_at']);
 
         $forms = Form::latest()->limit(5)->get();
 
