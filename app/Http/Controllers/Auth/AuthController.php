@@ -38,9 +38,7 @@ class AuthController extends Controller
                     return redirect()->route('admin.dashboard')->with('message', 'Welcome to Admin Dashboard.');
                 }
 
-                if (Auth::user()->hasRole('manager')) {
-                    return redirect()->route('manager.dashboard')->with('message', 'Welcome to Semi Admin Dashboard.');
-                }
+
 
                 if (Auth::user()->hasRole('supervisor')) {
                     return redirect()->route('supervisor.dashboard')->with('message', 'welcome to Supervisor Dashboard.');
