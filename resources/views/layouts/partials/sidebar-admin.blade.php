@@ -188,7 +188,7 @@ Use dot badge instead of animated pulse effect:
                         </div>
                     </a>
                     <div class="kt-notification__custom kt-space-between">
-                        <a href="{{url('/logout')}}" target="_blank" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
+                        <a href="{{url('/logout')}}"  class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
                     </div>
                 </div>
 

@@ -197,7 +197,7 @@
 																	</g>
 																</svg> </span>
                                         <span class="kt-widget17__subtitle">
-																Supervisors
+																Vendors
 															</span>
                                         <span class="kt-widget17__desc">
 																{{ $totalSupervisors }}
@@ -215,7 +215,7 @@
 																	</g>
 																</svg> </span>
                                         <span class="kt-widget17__subtitle">
-																Employees
+																Active Products
 															</span>
                                         <span class="kt-widget17__desc">
 																{{ $totalEmployees }}
@@ -231,7 +231,7 @@
 																	</g>
 																</svg> </span>
                                         <span class="kt-widget17__subtitle">
-																Forms
+																Products
 															</span>
                                         <span class="kt-widget17__desc">
 																{{ $totalForms }}

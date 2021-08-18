@@ -55,7 +55,7 @@ class AuthController extends Controller
                 }
 
 
-                return \redirect(\url('/main-view'))->with('Success', 'LoggedIn Successfully');
+                return \redirect(\url('admin/dashboard'))->with('Success', 'LoggedIn Successfully');
             } else {
                 return \redirect()->back()->with('error', 'Invalid Password');
             }
