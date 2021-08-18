@@ -12,6 +12,7 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {
     Route::get('/profile/{id}', [\App\Http\Controllers\Admin\PageController::class, 'getAdmin'])->name('profile.getadmin');
     Route::put('/profile', [\App\Http\Controllers\Admin\PageController::class, 'update'])->name('profile.update');
 
+    Route::get('/products' ,[\App\Http\Controllers\ProductController::class,'all'])->name('products');
 
     Route::resource('/supervisors', \App\Http\Controllers\Admin\SupervisorController::class)->except('destroy');
 

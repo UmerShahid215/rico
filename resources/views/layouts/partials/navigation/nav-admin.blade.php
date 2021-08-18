@@ -23,7 +23,7 @@
                 <li class="kt-menu__item {{ request()->routeIs('admin.dashboard') ? 'kt-menu__item--active' : '' }}"><a href="{{ route('admin.dashboard') }}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Dashboard</span></a></li>
                 <li class="kt-menu__item  kt-menu__item--submenu {{ request()->routeIs('admin.semi-admins.*') ? 'kt-menu__item--active' : '' }}" aria-haspopup="true"><a href="{{ route('admin.semi-admins.index') }}" class="kt-menu__link "><i class="kt-menu__link-icon fas fa-users"></i><span class="kt-menu__link-text">Semi Admin</span></a></li>
 
-
+                <li class="kt-menu__item  kt-menu__item--submenu {{ request()->routeIs('admin.products') ? 'kt-menu__item--active' : '' }}" aria-haspopup="true"><a href="{{ route('admin.products') }}" class="kt-menu__link "><i class="kt-menu__link-icon fas fa-users"></i><span class="kt-menu__link-text">Products</span></a></li>
 
             </ul>
         </div>
