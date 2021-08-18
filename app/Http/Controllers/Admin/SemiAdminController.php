@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Http\Requests\semiadminRequest;
 use Illuminate\Support\Facades\Storage;
 
 class SemiAdminController extends Controller
@@ -25,9 +24,18 @@ class SemiAdminController extends Controller
 
 
 
-    public function store(semiadminRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->validated();
+        $data = $request->validate([
+            'f_name' => ['required'],
+            'l_name' => ['required'],
+            'email' => ['required'],
+            'profile_picture' => ['nullable', 'image'],
+            'cninc' => ['nullable', 'string'],
+            'phone_number' => ['nullable', 'string'],
+            'dob' => ['nullable', 'string'],
+            'password' => ['required'],
+        ]);
 
         if ($request->hasFile('profile_picture')) {
             $data['profile_picture'] = $request->file('profile_picture')->store('profiles');
